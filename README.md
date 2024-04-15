@@ -45,3 +45,16 @@ AWS 上に Web アプリケーションを構築するサンプルプロジェ�
 ## 3 手元での動かし方
 
 ## 4 アーキテクチャ
+
+---
+
+## 参考にしたリポジトリ
+### [aws-samples/simple-lex-kendra-jp](https://github.com/aws-samples/simple-lex-kendra-jp)
+日本語に最適化されたシンプルな Amazon Lex v2 と Amazon Kendra のサンプルプロジェクトです。
+CDK の勉強にも RAG の勉強にもなります。
+各ドキュメントが日本語で書かれているのがとてもありがたいです。
+
+### [kgrzybek/modular-monolith-with-ddd](https://github.com/kgrzybek/modular-monolith-with-ddd)
+モジュラモノリス + DDD のサンプルプロジェクトです。
+サンプルプロジェクトではあまり見かけないレベルの複雑なドメインを扱っています。
+丁寧に書かれた README を読むだけでも勉強になります。
