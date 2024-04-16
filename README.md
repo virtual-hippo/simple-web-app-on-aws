@@ -27,10 +27,13 @@ AWS 上に Web アプリケーションを構築するサンプルプロジェ�
 
 ### 1.3 ディレクトリ構成(予定)
 ```shell
-├── cdk         # AWS CDK 用のディレクトリ
+├── cdk         
 ├── docs        # このリポジトリに関するドキュメント保存用のディレクトリ
 ├── imgs        # ドキュメントに用いる画像保存用のディレクトリ
-├── web-client  # React で作成する Web アプリケーション用のディレクトリ
+├── web-client
+├── packages
+│  ├── cdk          # AWS CDK 用のディレクトリ
+│  └── web-client   # React で作成する Web アプリケーション用のディレクトリ
 ├── LICENSE
 └── README.md
 ```
