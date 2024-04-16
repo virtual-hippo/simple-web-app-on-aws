@@ -1,0 +1,12 @@
+{
+  "name": "hello-pnpm-workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"hello pnpm workspace\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
