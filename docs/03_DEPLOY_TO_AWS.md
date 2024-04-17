@@ -4,5 +4,5 @@
 以下のコマンドでデプロイすることができます。
 
 ```shell
-pnpm cdk deproy
+pnpm cdk deploy
 ```
