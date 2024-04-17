@@ -10,6 +10,7 @@
   },
   "packageManager": "pnpm@9.0.0",
   "scripts": {
+    "cdk": "pnpm -F \"cdk\" \"cdk\"",
     "hello": "pnpm -F \"hello-pnpm-workspace\""
   },
   "keywords": [],
