@@ -10,9 +10,12 @@
   },
   "packageManager": "pnpm@9.0.0",
   "scripts": {
-    "hello": "pnpm -F \"hello-pnpm-workspace\""
+    "cdk": "pnpm -F \"cdk\" \"cdk\""
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "aws-cdk": "^2.137.0"
+  }
 }
