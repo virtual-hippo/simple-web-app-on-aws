@@ -43,7 +43,10 @@ AWS 上に Web アプリケーションを構築するサンプルプロジェ�
 
 ### 2.2 概念モデル
 
-## 3 手元での動かし方
+## 3 使い方
+- [1 準備](/docs/01_PREPARATION.md)
+- [2 ローカルマシンでの実行](/docs/02_EXECUTION_ON_LOCAL_MACHINE.md)
+- [3 AWS へのデプロイ](/docs/03_DEPLOY_TO_AWS.md)
 
 ## 4 アーキテクチャ
 
