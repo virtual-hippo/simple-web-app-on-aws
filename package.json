@@ -10,7 +10,8 @@
   },
   "packageManager": "pnpm@9.0.0",
   "scripts": {
-    "cdk": "pnpm -F \"cdk\" \"cdk\""
+    "cdk": "pnpm -F \"cdk\" \"cdk\"",
+    "react": "pnpm -F web-client"
   },
   "keywords": [],
   "author": "",
