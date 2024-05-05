@@ -1,0 +1,10 @@
+{
+  "name": "@virtual-hippo/lambda",
+  "private": true,
+  "scripts": {
+    "hello": "echo \"hello world\""
+  },
+  "dependencies": {
+    "@types/aws-lambda": "^8.10.137"
+  }
+}

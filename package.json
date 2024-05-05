@@ -11,6 +11,7 @@
   "packageManager": "pnpm@9.0.0",
   "scripts": {
     "cdk": "pnpm -F \"cdk\" \"cdk\"",
+    "lambda": "pnpm -F @virtual-hippo/lambda",
     "react": "pnpm -F web-client"
   },
   "keywords": [],
