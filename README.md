@@ -69,6 +69,11 @@ AWS 上に Web アプリケーションを構築するサンプルプロジェ�
 CDK の勉強にも RAG の勉強にもなります。
 各ドキュメントが日本語で書かれているのがとてもありがたいです。
 
+### [aws-samples/baseline-environment-on-aws](https://github.com/aws-samples/baseline-environment-on-aws)
+
+単独の AWS アカウントまたは AWS Control Tower で管理されたマルチアカウント環境で、セキュアなベースラインを確立するためのリファレンス AWS CDK テンプレート群です。
+日本語の README もあるのでとてもありがたいです。
+
 ### [kgrzybek/modular-monolith-with-ddd](https://github.com/kgrzybek/modular-monolith-with-ddd)
 
 モジュラモノリス + DDD のサンプルプロジェクトです。
