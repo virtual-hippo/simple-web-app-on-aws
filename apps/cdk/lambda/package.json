@@ -1,0 +1,7 @@
+{
+  "name": "@virtual-hippo/lambda",
+  "private": true,
+  "scripts": {
+    "hello": "echo \"hello world\""
+  }
+}
