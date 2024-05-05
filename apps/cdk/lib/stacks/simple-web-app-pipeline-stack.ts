@@ -34,6 +34,10 @@ export class SimpleWebAppPipelineStack extends cdk.Stack {
       }),
     });
 
-    pipeline.addStage(new SimpleWebAppStage(this, "Dev", {}));
+    const deployment = pipeline.addStage(
+      new SimpleWebAppStage(this, "Dev", {})
+    );
+    // TODO: add test (https://github.com/virtual-hippo/simple-web-app-on-aws/issues/19)
+    // deployment.addPost(..);
   }
 }
