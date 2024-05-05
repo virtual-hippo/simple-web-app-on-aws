@@ -31,7 +31,7 @@ export class SimpleWebAppPipelineStack extends cdk.Stack {
         installCommands: [
           "n stable",
           "node --version",
-          "npm i -g pnpm",
+          "npm i -g pnpm@9.0.0",
           "pnpm --version",
         ],
         commands: ["pnpm i", "pnpm cdk synth"],
