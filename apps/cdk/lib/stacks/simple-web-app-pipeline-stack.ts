@@ -10,6 +10,7 @@ export class SimpleWebAppPipelineStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: SimpleWebAppPipelineProps) {
     super(scope, id, props);
 
+    const githubOwner = "virtual-hippo";
     const githubRepo = "simple-web-app-on-aws";
     const githubBranch = "master";
     const connectionArn = StringParameter.valueFromLookup(
@@ -21,7 +22,7 @@ export class SimpleWebAppPipelineStack extends cdk.Stack {
       crossAccountKeys: true,
       synth: new pipelines.CodeBuildStep("SynthStep", {
         input: pipelines.CodePipelineSource.connection(
-          githubRepo,
+          `${githubOwner}/${githubRepo}`,
           githubBranch,
           {
             connectionArn: connectionArn,
