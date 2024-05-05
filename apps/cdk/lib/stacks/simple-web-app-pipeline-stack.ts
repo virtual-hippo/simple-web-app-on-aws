@@ -12,7 +12,7 @@ export class SimpleWebAppPipelineStack extends cdk.Stack {
 
     const githubOwner = "virtual-hippo";
     const githubRepo = "simple-web-app-on-aws";
-    const githubBranch = "master";
+    const githubBranch = "production";
     const connectionArn = StringParameter.valueFromLookup(
       this,
       "/github/simple-web-app-on-aws/connectionArn"
