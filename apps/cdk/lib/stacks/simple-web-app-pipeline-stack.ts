@@ -1,6 +1,7 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { pipelines } from "aws-cdk-lib";
+import { SimpleWebAppStage } from "../stages/simple-web-app-stage";
 
 export interface SimpleWebAppPipelineProps extends cdk.StackProps {}
 
@@ -33,6 +34,6 @@ export class SimpleWebAppPipelineStack extends cdk.Stack {
       }),
     });
 
-    // pipeline.addStage(new BLEAEcsAppStage(this, "Dev", params));
+    pipeline.addStage(new SimpleWebAppStage(this, "Dev", {}));
   }
 }
