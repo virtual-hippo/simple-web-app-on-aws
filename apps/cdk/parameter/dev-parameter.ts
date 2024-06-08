@@ -6,7 +6,7 @@ export const devParameter: AppParameter = {
   env: {
     region: "ap-northeast-1",
   },
-  envName: "Development",
+  envName: "dev",
   sysName: "simple-web-app-on-aws",
 };
 
@@ -15,7 +15,7 @@ export const devPipelineParameter: PipelineParameter = {
   env: {
     region: "ap-northeast-1",
   },
-  envName: "Development",
+  envName: "dev",
   sysName: "simple-web-app-on-aws-pipeline",
   sourceRepository: "virtual-hippo/simple-web-app-on-aws",
   sourceBranch: "dev",
