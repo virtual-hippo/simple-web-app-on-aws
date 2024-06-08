@@ -17,5 +17,9 @@ export class SimpleWebAppStack extends cdk.Stack {
       sysName: props.sysName,
       envName: props.envName,
     });
+
+    new cdk.CfnOutput(this, "SimpleWebAppUrl", {
+      value: `https://${web.distribution.distributionDomainName}`,
+    });
   }
 }
