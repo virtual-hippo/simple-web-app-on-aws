@@ -2,14 +2,24 @@
 import "source-map-support/register";
 import * as cdk from "aws-cdk-lib";
 import { SimpleWebAppPipelineStack } from "../lib/stacks/simple-web-app-pipeline-stack";
+import { devParameter, devPipelineParameter } from "../parameter";
 
 const app = new cdk.App();
-const stack = new SimpleWebAppPipelineStack(app, "SimpleWebAppPipelineStack", {
-  env: {
-    account: process.env.CDK_DEFAULT_ACCOUNT,
-    region: process.env.CDK_DEFAULT_REGION,
-  },
-  tags: {
-    SysName: "simple-web-app-on-aws",
-  },
-});
+const pipelineStack = new SimpleWebAppPipelineStack(
+  app,
+  "SimpleWebAppPipelineStack",
+  {
+    env: {
+      account:
+        devPipelineParameter.env.account || process.env.CDK_DEFAULT_ACCOUNT,
+      region: devPipelineParameter.env.region || process.env.CDK_DEFAULT_REGION,
+    },
+    tags: {
+      SysName: devPipelineParameter.sysName,
+      Env: devPipelineParameter.envName,
+    },
+    targetParameters: [devParameter],
+    sourceRepository: devPipelineParameter.sourceRepository,
+    sourceBranch: devPipelineParameter.sourceBranch,
+  }
+);

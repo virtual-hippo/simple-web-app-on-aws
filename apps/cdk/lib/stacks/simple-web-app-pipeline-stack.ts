@@ -3,8 +3,14 @@ import { Construct } from "constructs";
 import { pipelines, aws_iam as iam } from "aws-cdk-lib";
 import { SimpleWebAppStage } from "../stages/simple-web-app-stage";
 import { StringParameter } from "aws-cdk-lib/aws-ssm";
+import { AppParameter } from "../../parameter";
 
-export interface SimpleWebAppPipelineProps extends cdk.StackProps {}
+export interface SimpleWebAppPipelineProps extends cdk.StackProps {
+  targetParameters: AppParameter[];
+  env: cdk.Environment;
+  sourceRepository: string;
+  sourceBranch: string;
+}
 
 export class SimpleWebAppPipelineStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: SimpleWebAppPipelineProps) {
@@ -19,9 +25,6 @@ export class SimpleWebAppPipelineStack extends cdk.Stack {
       ],
     });
 
-    const githubOwner = "virtual-hippo";
-    const githubRepo = "simple-web-app-on-aws";
-    const githubBranch = "production";
     const connectionArn = StringParameter.valueFromLookup(
       this,
       "/github/simple-web-app-on-aws/connectionArn"
@@ -31,8 +34,8 @@ export class SimpleWebAppPipelineStack extends cdk.Stack {
       crossAccountKeys: true,
       synth: new pipelines.CodeBuildStep("SynthStep", {
         input: pipelines.CodePipelineSource.connection(
-          `${githubOwner}/${githubRepo}`,
-          githubBranch,
+          props.sourceRepository,
+          props.sourceBranch,
           {
             connectionArn: connectionArn,
           }
@@ -49,10 +52,12 @@ export class SimpleWebAppPipelineStack extends cdk.Stack {
       }),
     });
 
-    const deployment = pipeline.addStage(
-      new SimpleWebAppStage(this, "Dev", {})
-    );
-    // TODO: add test (https://github.com/virtual-hippo/simple-web-app-on-aws/issues/19)
-    // deployment.addPost(..);
+    props.targetParameters.forEach((param) => {
+      const deployment = pipeline.addStage(
+        new SimpleWebAppStage(this, param.envName, param)
+      );
+      // TODO: add test (https://github.com/virtual-hippo/simple-web-app-on-aws/issues/19)
+      // deployment.addPost(..);
+    });
   }
 }
