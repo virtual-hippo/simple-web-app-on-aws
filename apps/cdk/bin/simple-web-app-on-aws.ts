@@ -2,7 +2,7 @@
 import "source-map-support/register";
 import * as cdk from "aws-cdk-lib";
 import { SimpleWebAppPipelineStack } from "../lib/stacks/simple-web-app-pipeline-stack";
-import { devParameter, devPipelineParameter } from "../parameter";
+import { appParameters, devPipelineParameter } from "../parameter";
 
 const app = new cdk.App();
 const pipelineStack = new SimpleWebAppPipelineStack(
@@ -18,7 +18,7 @@ const pipelineStack = new SimpleWebAppPipelineStack(
       SysName: devPipelineParameter.sysName,
       Env: devPipelineParameter.envName,
     },
-    targetParameters: [devParameter],
+    targetParameters: appParameters,
     sourceRepository: devPipelineParameter.sourceRepository,
     sourceBranch: devPipelineParameter.sourceBranch,
   }

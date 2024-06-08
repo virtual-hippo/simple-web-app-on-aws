@@ -16,6 +16,8 @@ export class SimpleWebAppStage extends cdk.Stage {
         SysName: props.sysName,
         Env: props.envName,
       },
+      sysName: props.sysName,
+      envName: props.envName,
     });
   }
 }

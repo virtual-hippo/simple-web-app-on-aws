@@ -3,10 +3,10 @@ import { Construct } from "constructs";
 import { pipelines, aws_iam as iam } from "aws-cdk-lib";
 import { SimpleWebAppStage } from "../stages/simple-web-app-stage";
 import { StringParameter } from "aws-cdk-lib/aws-ssm";
-import { AppParameter } from "../../parameter";
+import { AppParameters } from "../../parameter";
 
 export interface SimpleWebAppPipelineProps extends cdk.StackProps {
-  targetParameters: AppParameter[];
+  targetParameters: AppParameters;
   env: cdk.Environment;
   sourceRepository: string;
   sourceBranch: string;
@@ -52,9 +52,9 @@ export class SimpleWebAppPipelineStack extends cdk.Stack {
       }),
     });
 
-    props.targetParameters.forEach((param) => {
+    Object.keys(props.targetParameters).forEach((envId) => {
       const deployment = pipeline.addStage(
-        new SimpleWebAppStage(this, param.envName, param)
+        new SimpleWebAppStage(this, envId, props.targetParameters[envId])
       );
       // TODO: add test (https://github.com/virtual-hippo/simple-web-app-on-aws/issues/19)
       // deployment.addPost(..);
