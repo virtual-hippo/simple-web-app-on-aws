@@ -197,7 +197,7 @@ export class Web extends Construct {
       ],
       destinationBucket: sourceBucket,
       distribution: distribution,
-      outputSourceDirectory: "./packages/web/dist",
+      outputSourceDirectory: "./apps/web/dist",
       buildCommands: [
         "npm i -g pnpm@9.0.0",
         "pnpm i",
