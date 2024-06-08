@@ -1,10 +1,7 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { SimpleWebAppStack } from "../stacks/simple-web-app-stack";
-
-interface AppParameter {
-  env?: cdk.Environment;
-}
+import { AppParameter } from "../../parameter";
 
 export class SimpleWebAppStage extends cdk.Stage {
   constructor(scope: Construct, id: string, props: AppParameter) {
@@ -15,8 +12,10 @@ export class SimpleWebAppStage extends cdk.Stage {
         account: props.env?.account || process.env.CDK_DEFAULT_ACCOUNT,
         region: props.env?.region || process.env.CDK_DEFAULT_REGION,
       },
+      tags: {
+        SysName: props.sysName,
+        Env: props.envName,
+      },
     });
-
-    cdk.Tags.of(simpleWebAppStack).add("SysName", "simple-web-app-on-aws");
   }
 }
