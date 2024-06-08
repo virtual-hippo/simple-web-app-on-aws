@@ -38,7 +38,7 @@ AWS 上に Web アプリケーションを構築するサンプルプロジェ�
 ├── apps
 │  ├── cdk          # AWS CDK 用のディレクトリ
 │  │  └── lambda    # AWS Lambda 関数ソースコード格納用ディレクトリ
-│  └── web-client   # React で作成する Web アプリケーション用のディレクトリ
+│  └── web   # React で作成する Web アプリケーション用のディレクトリ
 ├── LICENSE
 └── README.md
 ```
