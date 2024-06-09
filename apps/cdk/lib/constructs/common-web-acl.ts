@@ -109,7 +109,7 @@ export class CommonWebAcl extends Construct {
           action: { allow: {} },
           visibilityConfig: {
             cloudWatchMetricsEnabled: true,
-            metricName: `GeoMatchSetRule${id}`,
+            metricName: `Customor-GeoMatchSetRule${id}`,
             sampledRequestsEnabled: true,
           },
           statement: {
