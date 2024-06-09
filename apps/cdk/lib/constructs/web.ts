@@ -11,6 +11,7 @@ import { NodejsBuild } from "deploy-time-build";
 export interface WebProps {
   sysName: string;
   envName: string;
+  cloudFrontWebAclArn: string;
 }
 
 // referred to the following article
@@ -134,6 +135,7 @@ export class Web extends Construct {
       logBucket: cloudfrontLoggingBucket,
       logFilePrefix: "distribution-access-log/",
       logIncludesCookies: true,
+      webAclId: props.cloudFrontWebAclArn,
     });
 
     const cfnDistribution = distribution.node

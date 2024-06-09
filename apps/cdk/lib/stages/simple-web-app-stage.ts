@@ -1,11 +1,30 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
+import { CloudFrontWafStack } from "../stacks/cloud-front-waf-stack";
 import { SimpleWebAppStack } from "../stacks/simple-web-app-stack";
 import { AppParameter } from "../../parameter";
 
 export class SimpleWebAppStage extends cdk.Stage {
   constructor(scope: Construct, id: string, props: AppParameter) {
     super(scope, id, props);
+
+    const cloudFrontWafStack = new CloudFrontWafStack(
+      this,
+      "CloudFrontWafStack",
+      {
+        env: {
+          account: props.env?.account || process.env.CDK_DEFAULT_ACCOUNT,
+          region: "us-east-1",
+        },
+        tags: {
+          SysName: props.sysName,
+          Env: props.envName,
+        },
+        crossRegionReferences: true,
+        sysName: props.sysName,
+        envName: props.envName,
+      }
+    );
 
     const simpleWebAppStack = new SimpleWebAppStack(this, "SimpleWebApp", {
       env: {
@@ -16,8 +35,12 @@ export class SimpleWebAppStage extends cdk.Stage {
         SysName: props.sysName,
         Env: props.envName,
       },
+      crossRegionReferences: true,
       sysName: props.sysName,
       envName: props.envName,
+      cloudFrontWebAclArn: cloudFrontWafStack.webAclArn,
     });
+
+    simpleWebAppStack.addDependency(cloudFrontWafStack);
   }
 }
