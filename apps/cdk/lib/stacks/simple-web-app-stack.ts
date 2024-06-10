@@ -5,7 +5,7 @@ import { lambdaFunctions, Web } from "../constructs";
 export interface SimpleWebAppStackProps extends cdk.StackProps {
   sysName: string;
   envName: string;
-  cloudFrontWebAclArn: string;
+  cloudFrontWebAclArn?: string;
 }
 
 export class SimpleWebAppStack extends cdk.Stack {
