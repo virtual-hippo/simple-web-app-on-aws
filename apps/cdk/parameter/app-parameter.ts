@@ -5,4 +5,5 @@ export interface AppParameter {
   env?: Environment;
   envName: string;
   sysName: string;
+  isWafEnabled: boolean;
 }

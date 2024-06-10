@@ -11,7 +11,7 @@ import { NodejsBuild } from "deploy-time-build";
 export interface WebProps {
   sysName: string;
   envName: string;
-  cloudFrontWebAclArn: string;
+  cloudFrontWebAclArn?: string;
 }
 
 // referred to the following article

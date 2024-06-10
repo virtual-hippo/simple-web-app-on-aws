@@ -8,10 +8,9 @@ export class SimpleWebAppStage extends cdk.Stage {
   constructor(scope: Construct, id: string, props: AppParameter) {
     super(scope, id, props);
 
-    const cloudFrontWafStack = new CloudFrontWafStack(
-      this,
-      "CloudFrontWafStack",
-      {
+    let cloudFrontWafStack;
+    if (props.isWafEnabled) {
+      cloudFrontWafStack = new CloudFrontWafStack(this, "CloudFrontWafStack", {
         env: {
           account: props.env?.account || process.env.CDK_DEFAULT_ACCOUNT,
           region: "us-east-1",
@@ -23,8 +22,8 @@ export class SimpleWebAppStage extends cdk.Stage {
         crossRegionReferences: true,
         sysName: props.sysName,
         envName: props.envName,
-      }
-    );
+      });
+    }
 
     const simpleWebAppStack = new SimpleWebAppStack(this, "SimpleWebApp", {
       env: {
@@ -35,12 +34,14 @@ export class SimpleWebAppStage extends cdk.Stage {
         SysName: props.sysName,
         Env: props.envName,
       },
-      crossRegionReferences: true,
+      crossRegionReferences: props.isWafEnabled && true,
       sysName: props.sysName,
       envName: props.envName,
-      cloudFrontWebAclArn: cloudFrontWafStack.webAclArn,
+      cloudFrontWebAclArn: cloudFrontWafStack && cloudFrontWafStack.webAclArn,
     });
 
-    simpleWebAppStack.addDependency(cloudFrontWafStack);
+    if (cloudFrontWafStack) {
+      simpleWebAppStack.addDependency(cloudFrontWafStack);
+    }
   }
 }
