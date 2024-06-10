@@ -10,6 +10,7 @@ export const devParameter: AppParameter = {
   },
   envName: "dev",
   sysName: sysName,
+  isWafEnabled: false,
 };
 
 // Parameters for Pipeline Account
